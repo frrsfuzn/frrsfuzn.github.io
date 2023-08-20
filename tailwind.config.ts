@@ -15,6 +15,7 @@ const config: Config = {
         'pampas': '#F1F0E8',
         'martinique': '#2B2A4C',
         'tabasco': '#B31312',
+        'apricot': '#EA906C',
       },
     },
   },
