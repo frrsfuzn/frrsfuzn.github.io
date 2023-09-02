@@ -1,3 +1,5 @@
+"use client";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   AiFillGithub,
@@ -6,7 +8,21 @@ import {
   AiFillTwitterSquare,
   AiOutlineTwitter,
 } from "react-icons/ai";
+import Section from "@/components/Section";
+
+/*
+  TODOS:
+  - display 3d room with threejs
+  - create tree experiences
+  - create highlight section system
+*/
+
 export default function Home() {
+  const aboutRef = useRef();
+  const experiencesRef = useRef();
+  const blogsRef = useRef();
+  const projectsRef = useRef();
+
   return (
     <div className="container mx-auto">
       <div className="lg:flex lg:justify-between lg:gap-12 min-lg:px-5">
@@ -35,6 +51,12 @@ export default function Home() {
               </p>
             </div>
           </div>
+          <div className="flex flex-col px-10 max-lg:hidden">
+            <Link href="#about">About</Link>
+            <Link href="#experiences">Experiences</Link>
+            <Link href="#blogs">Blogs</Link>
+            <Link href="#projects">Projects</Link>
+          </div>
           <div className="px-10">
             <ul className="flex items-center">
               <li className="mr-4">
@@ -61,7 +83,7 @@ export default function Home() {
           </div>
         </header>
         <main className="lg:w-3/5 lg:pt-20 max-lg:px-10">
-          <section id="about" className="pb-10">
+          <Section id="about" >
             <h2 className="text-3xl">About</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
@@ -93,8 +115,8 @@ export default function Home() {
               placerat, nunc lacus volutpat urna, sed eleifend sapien libero
               posuere nisl.
             </p>
-          </section>
-          <section id="about" className="pb-10">
+          </Section>
+          <Section id="experiences">
             <h2 className="text-3xl">Experiences</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
@@ -126,8 +148,8 @@ export default function Home() {
               placerat, nunc lacus volutpat urna, sed eleifend sapien libero
               posuere nisl.
             </p>
-          </section>
-          <section id="about" className="pb-10">
+          </Section>
+          <Section id="blogs">
             <h2 className="text-3xl">Blogs</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
@@ -159,8 +181,8 @@ export default function Home() {
               placerat, nunc lacus volutpat urna, sed eleifend sapien libero
               posuere nisl.
             </p>
-          </section>
-          <section id="about" className="pb-10">
+          </Section>
+          <Section id="projects">
             <h2 className="text-3xl">Projects</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
@@ -192,8 +214,14 @@ export default function Home() {
               placerat, nunc lacus volutpat urna, sed eleifend sapien libero
               posuere nisl.
             </p>
-          </section>
+          </Section>
         </main>
+        <div className="sticky flex lg:hidden justify-center gap-10 items-center bg-nepal bottom-5 w-full h-10 rounded-full">
+          <Link href="#about">About</Link>
+          <Link href="#experiences">Experiences</Link>
+          <Link href="#blogs">Blogs</Link>
+          <Link href="#projects">Projects</Link>
+        </div>
       </div>
     </div>
   );
