@@ -34,28 +34,39 @@ export default function Home() {
             <Timeline
               data={[
                 {
-                  date: "January 2023 - February 2024",
-                  title: "Frontend Developer at PT. Mencari Cinta Sejati",
-                  description:
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue placerat orci. Duis id lacus orci. Aenean eget tempus odio. Vivamus felis quam, dapibus quis metus quis, tempus aliquet enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue placerat orci. Duis id lacus orci. Aenean eget tempus odio. Vivamus felis quam, dapibus quis metus quis, tempus aliquet enim.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue placerat orci. Duis id lacus orci. Aenean eget tempus odio. Vivamus felis quam, dapibus quis metus quis, tempus aliquet enim.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue placerat orci. Duis id lacus orci. Aenean eget tempus odio. Vivamus felis quam, dapibus quis metus quis, tempus aliquet enim.",
+                  date: "January 2023 - Present",
+                  title: "Frontend Developer at PT. Dans Multi Pro",
+                  tags: [
+                    "ReactJS",
+                    "NextJS",
+                    "Typescript",
+                    "Javascript",
+                    "GraphQL",
+                    "Redux",
+                    "Material UI",
+                  ],
+                  description: "Enhanced the file chunking mechanism, leading to significantly faster processing when uploading large files. Involved in implementing NextJS to the dashboard to achieve the best performance for our clients. Implement Storybook into the mobile site so that developers can easily preview components",
                 },
                 {
-                  date: "January 2022 - February 2023",
-                  title: "Frontend Developer at PT. Mencari Cinta Sejati",
+                  date: "January 2022 - November 2022",
+                  title: "Frontend Engineer at Ruangguru",
+                  tags: [
+                    "ReactJS",
+                    "NextJS",
+                    "React Native",
+                    "ReasonML",
+                    "Typescript",
+                    "Javascript",
+                  ],
                   description:
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent",
+                  "Developed features on Skillacademy's discovery using ReactJS with NextJS framework and programmed it with ReasonML to make it run-time error-free. Involved in creating SEO Category Tree on Skillacademy resulting in increasing organic search from < 5% to > 10%. Involved in improving the speed of changing content on Skillacademy with key values via Jenkins. Increase assets adjustment speed to less than 0.5 days and increase front-end productivity in updating homepage assets from 1 man week to 0.2 man week for modest interface changes on the homepage. Involved in technical planning and development of Skillacademy Gamification project; a reward mechanism using coins as tokens that can be exchanged for prizes. This project predicted gaining more user interest in learning on Skillacademy",
                 },
                 {
-                  date: "January 2021 - February 2023",
-                  title: "Frontend Developer at PT. Mencari Cinta Sejati",
+                  date: "September 2021 - December 2021",
+                  title: "Frontend Engineer Intern at Siklus",
+                  tags: ["ReactJS", "NextJS", "Typescript", "Material UI"],
                   description:
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent",
-                },
-                {
-                  date: "January 2020 - February 2021",
-                  title: "Frontend Developer at PT. Mencari Cinta Sejati",
-                  description:
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent",
+                    "Responsible for creating user interface of internal tools. Created with React JS with Next JS framework alongside with typescript and use Material UI as UI component.",
                 },
               ]}
             />
@@ -102,7 +113,7 @@ export default function Home() {
             </p>
           </Section>
         </main>
-        <div className="sticky flex lg:hidden justify-center gap-7 items-center bg-nepal/30 border-casper border-2 bottom-5 w-11/12 m-auto h-10 rounded-full backdrop-blur-sm">
+        <div className="sticky flex lg:hidden justify-center gap-7 items-center bg-nepal/10 text-tabasco border-casper border-2 bottom-5 w-11/12 m-auto h-10 rounded-full backdrop-blur-sm">
           <Link href="#about">About</Link>
           <Link href="#experiences">Experiences</Link>
           <Link href="#blogs">Blogs</Link>

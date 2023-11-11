@@ -3,6 +3,7 @@ import React from "react";
 type TimelineData = {
   date: string;
   title: string;
+  tags?: string[];
   description: string;
 };
 
@@ -22,7 +23,17 @@ function Timeline({ data }: TimelineProps) {
           <h3 className="text-lg font-semibold text-tabasco">
             {timeline.title}
           </h3>
-          <p className="mb-4 text-base font-normal">
+          <div>
+            {timeline.tags?.map((tag) => (
+              <label
+                key={tag}
+                className="bg-nepal p-0.5 text-sm text-martinique rounded-md mr-2"
+              >
+                {tag}
+              </label>
+            ))}
+          </div>
+          <p className="mt-2 mb-4 text-base font-normal">
             {timeline.description}
           </p>
         </li>

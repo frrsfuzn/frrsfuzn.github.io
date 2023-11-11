@@ -10,8 +10,8 @@ import {
 function Header() {
   return (
     <header className="lg:w-2/5 lg:sticky top-0 max-h-screen  flex flex-col justify-between max-lg:mb-20 overflow-y-auto">
-      <div className="h-screen">
-        <div className="mb-3 mt-20">
+      <div className="lg:h-screen">
+        <div className="mb-3 lg:mt-20">
           <div className="w-full h-60 bg-slate-700" />
           <div className="flex relative h-16 mb-5 pr-10 justify-end items-center">
             <div className="w-32 h-32 rounded-full bg-zinc-500 absolute left-10 -top-16"></div>

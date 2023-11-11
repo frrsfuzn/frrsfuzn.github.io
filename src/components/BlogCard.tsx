@@ -4,10 +4,10 @@ function BlogCard() {
   return (
     <a
       href="#"
-      className="flex flex-col items-center bg-almond border border-apricot rounded-lg shadow md:flex-row w-full hover:bg-almond"
+      className="flex flex-row items-center bg-almond border border-apricot rounded-lg shadow w-full hover:bg-almond"
     >
       <img
-        className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
+        className="object-cover w-full rounded-t-lg h-auto w-48 md:rounded-none md:rounded-s-lg"
         alt=""
       />
       <div className="flex flex-col justify-between p-4 leading-normal">
