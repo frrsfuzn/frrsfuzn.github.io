@@ -4,6 +4,7 @@ import Link from "next/link";
 import Section from "@/components/Section";
 import Header from "@/components/Header";
 import Timeline from "@/components/Timeline";
+import BlogCard from "@/components/BlogCard";
 
 /*
   TODOS:
@@ -60,37 +61,12 @@ export default function Home() {
             />
           </Section>
           <Section id="blogs">
-            <h2 className="text-3xl">Blogs</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-              congue placerat orci. Duis id lacus orci. Aenean eget tempus odio.
-              Vivamus felis quam, dapibus quis metus quis, tempus aliquet enim.
-              Curabitur in elit urna. Nulla non fringilla dui. Suspendisse vitae
-              tempor arcu. Donec consectetur quam id sem bibendum sollicitudin.
-              Maecenas ex justo, efficitur ut faucibus vel, maximus sed mi.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a
-              sagittis sapien. Ut vitae sodales ligula, ac elementum justo.
-              Phasellus ut aliquet dolor, eu malesuada lacus. Sed feugiat sed
-              sem id rhoncus. Nullam commodo felis mi, vitae dapibus velit
-              malesuada eu.
-            </p>
-            <p>
-              Phasellus sed elementum enim. Mauris vel aliquam nulla. Praesent
-              nec tincidunt felis. Nulla fermentum eros augue, fermentum congue
-              quam dignissim id. Duis consectetur metus et tellus convallis
-              auctor. Ut quam eros, tempor id iaculis nec, tincidunt non lorem.
-              Sed quis sem vitae lectus placerat tincidunt. Maecenas aliquam,
-              lorem sit amet feugiat laoreet, lectus nisi congue neque, id
-              ultrices magna ipsum a tellus. Suspendisse condimentum vulputate
-              vulputate. Integer tortor ex, venenatis vel tristique vitae,
-              vehicula ac enim. Vestibulum molestie eros sapien, vitae sodales
-              massa interdum nec. Vivamus sollicitudin, odio ac pharetra
-              tristique, dui arcu commodo dui, in tempor velit sapien in velit.
-              Pellentesque habitant morbi tristique senectus et netus et
-              malesuada fames ac turpis egestas. Nulla mollis, erat et ultricies
-              placerat, nunc lacus volutpat urna, sed eleifend sapien libero
-              posuere nisl.
-            </p>
+            <h2 className="text-3xl mb-5">Blogs</h2>
+            <div className="flex flex-col gap-4">
+              <BlogCard />
+              <BlogCard />
+              <BlogCard />
+            </div>
           </Section>
           <Section id="projects">
             <h2 className="text-3xl">Projects</h2>
@@ -126,7 +102,7 @@ export default function Home() {
             </p>
           </Section>
         </main>
-        <div className="sticky flex lg:hidden justify-center gap-10 items-center bg-nepal bottom-5 w-full h-10 rounded-full">
+        <div className="sticky flex lg:hidden justify-center gap-7 items-center bg-nepal/30 border-casper border-2 bottom-5 w-11/12 m-auto h-10 rounded-full backdrop-blur-sm">
           <Link href="#about">About</Link>
           <Link href="#experiences">Experiences</Link>
           <Link href="#blogs">Blogs</Link>
