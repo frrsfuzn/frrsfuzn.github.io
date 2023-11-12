@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   AiFillGithub,
   AiFillLinkedin,
@@ -12,9 +13,17 @@ function Header() {
     <header className="lg:w-2/5 lg:sticky top-0 max-h-screen  flex flex-col justify-between max-lg:mb-20 overflow-y-auto">
       <div className="lg:h-screen">
         <div className="mb-3 lg:mt-20">
-          <div className="w-full h-60 bg-slate-700" />
+          <div className="w-full h-60 bg-[url('https://picsum.photos/700/300')] bg-center" />
           <div className="flex relative h-16 mb-5 pr-10 justify-end items-center">
-            <div className="w-32 h-32 rounded-full bg-zinc-500 absolute left-10 -top-16"></div>
+            <div className="w-32 h-32 rounded-full bg-zinc-500 absolute left-10 -top-16 overflow-hidden">
+            <Image
+              alt="blog image"
+              src={"https://picsum.photos/300/300"}
+              width={300}
+              height={300}
+              unoptimized
+            />
+            </div>
             <Link
               href="https://twitter.com/frrsfuzn"
               target="_blank"

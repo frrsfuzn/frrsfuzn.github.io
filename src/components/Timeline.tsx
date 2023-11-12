@@ -23,11 +23,11 @@ function Timeline({ data }: TimelineProps) {
           <h3 className="text-lg font-semibold text-tabasco">
             {timeline.title}
           </h3>
-          <div>
+          <div className="flex flex-wrap gap-1 w-3/4">
             {timeline.tags?.map((tag) => (
               <label
                 key={tag}
-                className="bg-nepal p-0.5 text-sm text-martinique rounded-md mr-2"
+                className="bg-nepal p-0.5 text-sm text-martinique rounded-md whitespace-nowrap"
               >
                 {tag}
               </label>
