@@ -75,7 +75,7 @@ export default function Home() {
           <Section id="blogs">
             <div className="flex justify-between items-center mb-5">
               <h2 className="text-3xl">Blogs</h2>
-              <Link href={"#"} className="text-tabasco">See more</Link>
+              <Link href={"/blogs"} className="text-tabasco">See more</Link>
             </div>
             <div className="flex flex-col gap-4">
               <Card />
@@ -86,7 +86,7 @@ export default function Home() {
           <Section id="projects">
             <div className="flex justify-between items-center mb-5">
               <h2 className="text-3xl">Projects</h2>
-              <Link href={"#"} className="text-tabasco">See more</Link>
+              <Link href={"/projects"} className="text-tabasco">See more</Link>
             </div>
             <div className="flex flex-col gap-4">
               <Card />
