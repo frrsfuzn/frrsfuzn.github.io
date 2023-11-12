@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
 
-function BlogCard() {
+function Card() {
   return (
     <a
       href="#"
-      className="flex flex-row items-center bg-almond border border-apricot rounded-lg shadow w-full hover:bg-almond hover:text-tabasco"
+      className="flex flex-row max-sm:flex-col items-center bg-almond border border-apricot rounded-lg shadow w-full hover:bg-almond hover:text-tabasco"
     >
       <Image
         alt="blog image"
@@ -13,7 +13,7 @@ function BlogCard() {
         width={300}
         height={300}
         unoptimized
-        className="object-cover rounded-t-lg h-auto w-48 md:rounded-none md:rounded-s-lg"
+        className="object-cover rounded-t-lg h-auto w-48 max-sm:w-full md:rounded-none md:rounded-s-lg"
       />
       <div className="flex flex-col justify-between p-4 leading-normal">
         <h5 className="mb-2 text-2xl font-bold tracking-tight">
@@ -28,4 +28,4 @@ function BlogCard() {
   );
 }
 
-export default BlogCard;
+export default Card;

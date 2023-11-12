@@ -25,7 +25,7 @@ function Header() {
             />
             </div>
             <Link
-              href="https://twitter.com/frrsfuzn"
+              href="https://www.linkedin.com/in/mochfarrasfauzan/"
               target="_blank"
               className="bg-nepal text-pampas hover:drop-shadow-md hover:font-semibold rounded-3xl h-10 w-32 px-3 flex justify-evenly items-center"
             >

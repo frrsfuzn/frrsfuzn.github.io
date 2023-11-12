@@ -4,8 +4,7 @@ import Link from "next/link";
 import Section from "@/components/Section";
 import Header from "@/components/Header";
 import Timeline from "@/components/Timeline";
-import BlogCard from "@/components/BlogCard";
-import ProjectCard from "@/components/ProjectCard";
+import Card from "@/components/Card";
 
 /*
   TODOS:
@@ -79,9 +78,9 @@ export default function Home() {
               <Link href={"#"} className="text-tabasco">See more</Link>
             </div>
             <div className="flex flex-col gap-4">
-              <BlogCard />
-              <BlogCard />
-              <BlogCard />
+              <Card />
+              <Card />
+              <Card />
             </div>
           </Section>
           <Section id="projects">
@@ -89,14 +88,14 @@ export default function Home() {
               <h2 className="text-3xl">Projects</h2>
               <Link href={"#"} className="text-tabasco">See more</Link>
             </div>
-            <div className="flex gap-3 w-fit">
-              <ProjectCard />
-              <ProjectCard />
-              <ProjectCard />
+            <div className="flex flex-col gap-4">
+              <Card />
+              <Card />
+              <Card />
             </div>
           </Section>
         </main>
-        <div className="sticky flex lg:hidden justify-center gap-7 items-center bg-nepal/30 border-casper border-2 bottom-5 w-11/12 m-auto h-10 rounded-full backdrop-blur-sm">
+        <div className="sticky flex lg:hidden justify-center gap-7 items-center bg-pampas/30 border-casper border-2 bottom-5 w-11/12 m-auto h-10 rounded-full backdrop-blur-sm">
           <Link href="#about">About</Link>
           <Link href="#experiences">Experiences</Link>
           <Link href="#blogs">Blogs</Link>
