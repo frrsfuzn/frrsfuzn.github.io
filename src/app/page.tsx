@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Section from "@/components/Section";
@@ -10,7 +9,6 @@ import Card from "@/components/Card";
   TODOS:
   - display 3d room with threejs
   - create highlight section system
-  - implement toggle button for dark theme
 */
 
 export default function Home() {

@@ -13,7 +13,7 @@ interface TimelineProps {
 
 function Timeline({ data }: TimelineProps) {
   return (
-    <ol className="relative border-s border-martinique ">
+    <ol className="relative border-s dark:border-pampas border-martinique ">
       {data?.map((timeline) => (
         <li key={timeline.date} className="mb-10 ms-4">
           <div className="absolute w-3 h-3 dark:bg-pampas bg-apricot rounded-full mt-1.5 -start-1.5"></div>
