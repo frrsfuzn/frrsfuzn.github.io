@@ -10,6 +10,7 @@ import Card from "@/components/Card";
   TODOS:
   - display 3d room with threejs
   - create highlight section system
+  - implement toggle button for dark theme
 */
 
 export default function Home() {
@@ -75,7 +76,9 @@ export default function Home() {
           <Section id="blogs">
             <div className="flex justify-between items-center mb-5">
               <h2 className="text-3xl">Blogs</h2>
-              <Link href={"/blogs"} className="text-tabasco">See more</Link>
+              <Link href={"/blogs"} className="dark:text-arcticParadise text-tabasco">
+                See more
+              </Link>
             </div>
             <div className="flex flex-col gap-4">
               <Card />
@@ -86,7 +89,9 @@ export default function Home() {
           <Section id="projects">
             <div className="flex justify-between items-center mb-5">
               <h2 className="text-3xl">Projects</h2>
-              <Link href={"/projects"} className="text-tabasco">See more</Link>
+              <Link href={"/projects"} className="dark:text-arcticParadise text-tabasco">
+                See more
+              </Link>
             </div>
             <div className="flex flex-col gap-4">
               <Card />
@@ -95,7 +100,7 @@ export default function Home() {
             </div>
           </Section>
         </main>
-        <div className="sticky flex lg:hidden justify-center gap-7 items-center bg-pampas/30 border-casper border-2 bottom-5 w-11/12 m-auto h-10 rounded-full backdrop-blur-sm">
+        <div className="sticky flex lg:hidden justify-center gap-7 items-center bg-pampas/30 border-casper border-2 bottom-5 w-11/12 m-auto h-10 rounded-full backdrop-blur-sm shadow-md">
           <Link href="#about">About</Link>
           <Link href="#experiences">Experiences</Link>
           <Link href="#blogs">Blogs</Link>

@@ -27,14 +27,14 @@ function Header() {
             <Link
               href="https://www.linkedin.com/in/mochfarrasfauzan/"
               target="_blank"
-              className="bg-nepal text-pampas hover:drop-shadow-md hover:font-semibold rounded-3xl h-10 w-32 px-3 flex justify-evenly items-center"
+              className="dark:bg-seashellCove bg-nepal text-pampas hover:drop-shadow-md hover:font-semibold rounded-3xl h-10 w-32 px-3 flex justify-evenly items-center"
             >
               <AiFillLinkedin className="text-xl mr-1" />
               <span className="text-lg">Connect</span>
             </Link>
           </div>
           <div className="px-10">
-            <h1 className="text-4xl text-tabasco font-bold mb-5">
+            <h1 className="text-4xl dark:text-arcticParadise text-tabasco font-bold mb-5">
               Mochamad Farras Fauzan
             </h1>
             <p className="">
@@ -45,16 +45,16 @@ function Header() {
           </div>
         </div>
         <div className="flex flex-col px-10 mb-4 max-lg:hidden">
-          <Link className="text-tabasco hover:font-bold" href="#about">
+          <Link className="dark:text-arcticParadise text-tabasco hover:font-bold" href="#about">
             About
           </Link>
-          <Link className="text-tabasco hover:font-bold" href="#experiences">
+          <Link className="dark:text-arcticParadise text-tabasco hover:font-bold" href="#experiences">
             Experiences
           </Link>
-          <Link className="text-tabasco hover:font-bold" href="#blogs">
+          <Link className="dark:text-arcticParadise text-tabasco hover:font-bold" href="#blogs">
             Blogs
           </Link>
-          <Link className="text-tabasco hover:font-bold" href="#projects">
+          <Link className="dark:text-arcticParadise text-tabasco hover:font-bold" href="#projects">
             Projects
           </Link>
         </div>
@@ -62,22 +62,22 @@ function Header() {
           <ul className="flex items-center">
             <li className="mr-4">
               <Link href="https://github.com/frrsfuzn" target="_blank">
-                <AiFillGithub className="text-3xl text-nepal" />
+                <AiFillGithub className="text-3xl dark:text-blueSplash text-nepal" />
               </Link>
             </li>
             <li className="mr-4">
               <Link href="https://github.com/frrsfuzn" target="_blank">
-                <AiFillLinkedin className="text-3xl text-nepal" />
+                <AiFillLinkedin className="text-3xl dark:text-blueSplash text-nepal" />
               </Link>
             </li>
             <li className="mr-4">
               <Link href="https://github.com/frrsfuzn" target="_blank">
-                <AiFillInstagram className="text-3xl text-nepal" />
+                <AiFillInstagram className="text-3xl dark:text-blueSplash text-nepal" />
               </Link>
             </li>
             <li className="mr-4">
               <Link href="https://github.com/frrsfuzn" target="_blank">
-                <AiFillTwitterSquare className="text-3xl text-nepal" />
+                <AiFillTwitterSquare className="text-3xl dark:text-blueSplash text-nepal" />
               </Link>
             </li>
           </ul>
