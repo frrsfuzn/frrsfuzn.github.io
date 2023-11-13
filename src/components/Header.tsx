@@ -23,11 +23,10 @@ function Header() {
           <div className="flex relative h-16 mb-5 pr-10 justify-end items-center">
             <div className="w-28 h-28 xl:w-32 xl:h-32 rounded-full bg-zinc-500 absolute left-5 xl:left-10 -top-12 xl:-top-16 overflow-hidden">
               <Image
-                alt="blog image"
-                src={"https://picsum.photos/300/300"}
+                alt="profile"
+                src="/images/profile.jpg"
                 width={300}
                 height={300}
-                unoptimized
               />
             </div>
             <div className="flex flex-row justify-between">
