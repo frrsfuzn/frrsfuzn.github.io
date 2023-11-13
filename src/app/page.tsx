@@ -4,6 +4,9 @@ import Section from "@/components/Section";
 import Header from "@/components/Header";
 import Timeline from "@/components/Timeline";
 import Card from "@/components/Card";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 
 /*
   TODOS:
@@ -11,7 +14,21 @@ import Card from "@/components/Card";
   - create highlight section system
 */
 
+function getBlogs() {
+  const files = fs.readdirSync("./src/mdx/blogs");
+  const metaBlogs = files.map((filename) => {
+    const mdx = fs.readFileSync(path.join("./src/mdx/blogs", filename));
+    const { data: frontMatter } = matter(mdx);
+    return {
+      frontMatter,
+      slug: filename.split(".")[0],
+    };
+  });
+  return metaBlogs;
+}
+
 export default function Home() {
+  const metaBlogs = getBlogs();
   return (
     <div className="container md:px-10 mx-auto">
       <div className="lg:flex lg:justify-between lg:gap-12 min-lg:px-5">
@@ -74,27 +91,41 @@ export default function Home() {
           <Section id="blogs">
             <div className="flex justify-between items-center mb-5">
               <h2 className="text-3xl">Blogs</h2>
-              <Link href={"/blogs"} className="dark:text-arcticParadise text-tabasco">
+              <Link
+                href={"/blogs"}
+                className="dark:text-arcticParadise text-tabasco"
+              >
                 See more
               </Link>
             </div>
             <div className="flex flex-col gap-4">
+              {metaBlogs.map((metaBlog) => (
+                <Card
+                  key={metaBlog.slug}
+                  title={metaBlog.frontMatter.title}
+                  desc={metaBlog.frontMatter.description}
+                  href={`/blogs/${metaBlog.slug}`}
+                />
+              ))}
+              {/* <Card />
               <Card />
-              <Card />
-              <Card />
+              <Card /> */}
             </div>
           </Section>
           <Section id="projects">
             <div className="flex justify-between items-center mb-5">
               <h2 className="text-3xl">Projects</h2>
-              <Link href={"/projects"} className="dark:text-arcticParadise text-tabasco">
+              <Link
+                href={"/projects"}
+                className="dark:text-arcticParadise text-tabasco"
+              >
                 See more
               </Link>
             </div>
             <div className="flex flex-col gap-4">
+              {/* <Card />
               <Card />
-              <Card />
-              <Card />
+              <Card /> */}
             </div>
           </Section>
         </main>

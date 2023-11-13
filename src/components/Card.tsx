@@ -1,10 +1,17 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-function Card() {
+interface CardProps {
+  title: string;
+  desc: string;
+  href: string;
+}
+
+function Card({ title, desc, href }: CardProps) {
   return (
-    <a
-      href="#"
+    <Link
+      href={href}
       className="flex flex-row max-sm:flex-col items-center dark:bg-freinachtBlack bg-almond border dark:border-arcticParadise border-apricot rounded-lg shadow w-full dark:hover:bg-blueSplash hover:bg-almond hover:text-tabasco"
     >
       <Image
@@ -17,14 +24,13 @@ function Card() {
       />
       <div className="flex flex-col justify-between p-4 leading-normal">
         <h5 className="mb-2 dark:text-arcticParadise text-2xl font-bold tracking-tight">
-          Noteworthy technology acquisitions 2021
+          {title}
         </h5>
         <p className="mb-3 font-normal dark:text-arcticParadise text-martinique">
-          Here are the biggest enterprise technology acquisitions of 2021 so
-          far, in reverse chronological order.
+          {desc}
         </p>
       </div>
-    </a>
+    </Link>
   );
 }
 
