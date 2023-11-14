@@ -24,6 +24,7 @@ function Blogs() {
             href={`blogs/${metaBlog.slug}`}
             title={metaBlog.frontMatter.title}
             desc={metaBlog.frontMatter.description}
+            date={metaBlog.frontMatter.date}
           />
         ))}
       </div>

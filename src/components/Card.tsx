@@ -1,14 +1,18 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { parse, format } from 'date-fns';
 
 interface CardProps {
   title: string;
   desc: string;
   href: string;
+  date: string;
 }
 
-function Card({ title, desc, href }: CardProps) {
+function Card({ title, desc, href, date }: CardProps) {
+  const parsedDate = parse(date, "dd/MM/yyyy", new Date());
+  const formattedDate = format(parsedDate, "dd MMMM yyyy");
   return (
     <Link
       href={href}
@@ -26,7 +30,7 @@ function Card({ title, desc, href }: CardProps) {
         <h5 className="dark:text-arcticParadise text-2xl font-bold tracking-tight">
           {title}
         </h5>
-        <label className="text-sm dark:text-pampas">14 November 2023</label>
+        <label className="text-sm dark:text-pampas">{formattedDate}</label>
         <p className="mb-3 font-normal dark:text-arcticParadise text-martinique">
           {desc}
         </p>

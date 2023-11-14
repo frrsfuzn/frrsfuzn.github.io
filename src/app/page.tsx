@@ -107,11 +107,9 @@ export default function Home() {
                   title={metaBlog.frontMatter.title}
                   desc={metaBlog.frontMatter.description}
                   href={`/blogs/${metaBlog.slug}`}
+                  date={metaBlog.frontMatter.date}
                 />
               ))}
-              {/* <Card />
-              <Card />
-              <Card /> */}
             </div>
           </Section>
           <Section id="projects">
