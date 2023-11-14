@@ -5,7 +5,7 @@ import fs from "fs";
 import matter from "gray-matter";
 import { IoIosArrowBack } from "react-icons/io";
 import path from "path";
-import { parse } from 'date-fns';
+import { parse } from "date-fns";
 
 function Blogs() {
   const metaBlogs = getBlogs();
@@ -42,7 +42,11 @@ function getBlogs() {
       slug: filename.split(".")[0],
     };
   });
-  metaBlogs.sort((a, b) => parse(b.frontMatter.date, 'dd/MM/yyyy', new Date()) - parse(a.frontMatter.date, 'dd/MM/yyyy', new Date()))
+  metaBlogs.sort(
+    (a, b) =>
+      parse(b.frontMatter.date, "dd/MM/yyyy", new Date()).getTime() -
+      parse(a.frontMatter.date, "dd/MM/yyyy", new Date()).getTime()
+  );
   return metaBlogs;
 }
 
