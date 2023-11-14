@@ -33,8 +33,27 @@ function getBlogs() {
   return metaBlogs.slice(0, 3);
 }
 
+function getProjects() {
+  const files = fs.readdirSync("./src/mdx/projects");
+  const metaProjects = files.map((filename) => {
+    const mdx = fs.readFileSync(path.join("./src/mdx/projects", filename));
+    const { data: frontMatter } = matter(mdx);
+    return {
+      frontMatter,
+      slug: filename.split(".")[0],
+    };
+  });
+  metaProjects.sort(
+    (a, b) =>
+      parse(b.frontMatter.date, "dd/MM/yyyy", new Date()).getTime() -
+      parse(a.frontMatter.date, "dd/MM/yyyy", new Date()).getTime()
+  );
+  return metaProjects.slice(0, 3);
+}
+
 export default function Home() {
   const metaBlogs = getBlogs();
+  const metaProjects = getProjects();
   return (
     <div className="container md:px-10 mx-auto">
       <div className="lg:flex lg:justify-between lg:gap-12 min-lg:px-5">
@@ -128,9 +147,16 @@ export default function Home() {
               </Link>
             </div>
             <div className="flex flex-col gap-4">
-              {/* <Card />
-              <Card />
-              <Card /> */}
+              {metaProjects.map((metaProject) => (
+                <Card
+                  key={metaProject.slug}
+                  title={metaProject.frontMatter.title}
+                  desc={metaProject.frontMatter.description}
+                  href={`/projects/${metaProject.slug}`}
+                  date={metaProject.frontMatter.date}
+                  bannerUrl={metaProject.frontMatter.bannerUrl}
+                />
+              ))}
             </div>
           </Section>
         </main>
