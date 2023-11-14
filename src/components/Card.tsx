@@ -23,9 +23,10 @@ function Card({ title, desc, href }: CardProps) {
         className="object-cover rounded-t-lg h-auto w-48 max-sm:w-full md:rounded-none md:rounded-s-lg"
       />
       <div className="flex flex-col justify-between p-4 leading-normal">
-        <h5 className="mb-2 dark:text-arcticParadise text-2xl font-bold tracking-tight">
+        <h5 className="dark:text-arcticParadise text-2xl font-bold tracking-tight">
           {title}
         </h5>
+        <label className="text-sm dark:text-pampas">14 November 2023</label>
         <p className="mb-3 font-normal dark:text-arcticParadise text-martinique">
           {desc}
         </p>

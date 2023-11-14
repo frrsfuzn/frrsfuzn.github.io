@@ -1,21 +1,23 @@
 import fs from "fs";
 import path from "path";
+import Image from "next/image";
 import { compileMDX } from "next-mdx-remote/rsc";
 import Head from "next/head";
 import Link from "next/link";
 import { IoIosArrowBack } from "react-icons/io";
 
 const components = {
-  h1: ({ children }) => <h1 className="text-3xl">{children}</h1>,
-  h2: ({ children }) => <h2 className="text-2xl">{children}</h2>,
-  h3: ({ children }) => <h3 className="text-1xl">{children}</h3>,
-  h4: ({ children }) => <h4 className="text-xl">{children}</h4>,
+  h1: ({ children }) => <h1 className="text-3xl mb-5">{children}</h1>,
+  h2: ({ children }) => <h2 className="text-2xl mb-4">{children}</h2>,
+  h3: ({ children }) => <h3 className="text-xl mb-3">{children}</h3>,
+  h4: ({ children }) => <h4 className="text-lg mb-2">{children}</h4>,
+  p: ({ children }) => <p className="mb-1">{children}</p>
 };
 async function ArticlePage({ params }: { params: { slug: string } }) {
   const source = await getBlogs(params.slug);
   const { content, frontmatter } = await compileMDX<{
     title: string;
-    author: string;
+    date: string;
     topics: string;
     description: string;
   }>({
@@ -33,9 +35,27 @@ async function ArticlePage({ params }: { params: { slug: string } }) {
         <Link href="/blogs">
           <IoIosArrowBack className="text-xl dark:text-arcticParadise" />
         </Link>
-        <h3 className="ml-3 text-2xl dark:text-arcticParadise truncate">{frontmatter.title}</h3>
+        <h3 className="ml-3 text-2xl dark:text-arcticParadise truncate">
+          Blogs
+        </h3>
       </div>
-      <div className="flex flex-col gap-4 mb-20 px-2">{content}</div>
+      <div>
+        <div className="flex flex-col justify-center items-center mb-5">
+          <h1 className="text-2xl lg:text-3xl">{frontmatter.title}</h1>
+          <label className="text-sm">{frontmatter.date}</label>
+        </div>
+        <Image
+          src="https://picsum.photos/1280/480"
+          width={1280}
+          height={480}
+          unoptimized
+          className="mb-5"
+          alt="blog"
+        />
+        <div className="mb-20 px-2">
+          {content}
+        </div>
+      </div>
     </div>
   );
 }

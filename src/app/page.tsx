@@ -7,6 +7,7 @@ import Card from "@/components/Card";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { parse } from 'date-fns';
 
 /*
   TODOS:
@@ -24,7 +25,8 @@ function getBlogs() {
       slug: filename.split(".")[0],
     };
   });
-  return metaBlogs;
+  metaBlogs.sort((a, b) => parse(b.frontMatter.date, 'dd/MM/yyyy', new Date()) - parse(a.frontMatter.date, 'dd/MM/yyyy', new Date()))
+  return metaBlogs.slice(0,3);
 }
 
 export default function Home() {
