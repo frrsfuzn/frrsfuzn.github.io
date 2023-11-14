@@ -20,6 +20,7 @@ async function ArticlePage({ params }: { params: { slug: string } }) {
     date: string;
     topics: string;
     description: string;
+    bannerUrl: string;
   }>({
     source: source,
     options: { parseFrontmatter: true },
@@ -45,7 +46,7 @@ async function ArticlePage({ params }: { params: { slug: string } }) {
           <label className="text-sm">{frontmatter.date}</label>
         </div>
         <Image
-          src="https://picsum.photos/1280/480"
+          src={frontmatter.bannerUrl}
           width={1280}
           height={480}
           unoptimized

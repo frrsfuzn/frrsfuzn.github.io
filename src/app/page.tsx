@@ -112,6 +112,7 @@ export default function Home() {
                   desc={metaBlog.frontMatter.description}
                   href={`/blogs/${metaBlog.slug}`}
                   date={metaBlog.frontMatter.date}
+                  bannerUrl={metaBlog.frontMatter.bannerUrl}
                 />
               ))}
             </div>

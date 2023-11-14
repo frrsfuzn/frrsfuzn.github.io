@@ -25,6 +25,7 @@ function Blogs() {
             title={metaBlog.frontMatter.title}
             desc={metaBlog.frontMatter.description}
             date={metaBlog.frontMatter.date}
+            bannerUrl={metaBlog.frontMatter.bannerUrl}
           />
         ))}
       </div>

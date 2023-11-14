@@ -8,9 +8,10 @@ interface CardProps {
   desc: string;
   href: string;
   date: string;
+  bannerUrl: string;
 }
 
-function Card({ title, desc, href, date }: CardProps) {
+function Card({ title, desc, href, date, bannerUrl }: CardProps) {
   const parsedDate = parse(date, "dd/MM/yyyy", new Date());
   const formattedDate = format(parsedDate, "dd MMMM yyyy");
   return (
@@ -20,11 +21,11 @@ function Card({ title, desc, href, date }: CardProps) {
     >
       <Image
         alt="blog image"
-        src={"https://picsum.photos/300/300"}
+        src={bannerUrl}
         width={300}
         height={300}
         unoptimized
-        className="object-cover rounded-t-lg h-auto w-48 max-sm:w-full md:rounded-none md:rounded-s-lg"
+        className="object-cover rounded-t-lg h-48 max-sm:h-36 w-48 max-sm:w-full md:rounded-none md:rounded-s-lg"
       />
       <div className="flex flex-col justify-between p-4 leading-normal">
         <h5 className="dark:text-arcticParadise text-2xl font-bold tracking-tight">
