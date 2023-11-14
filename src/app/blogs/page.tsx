@@ -9,7 +9,6 @@ import { parse } from 'date-fns';
 
 function Blogs() {
   const metaBlogs = getBlogs();
-  console.log("metaBlogs", metaBlogs);
   return (
     <div className="max-w-screen-lg md:px-10 mx-auto">
       <div className="sticky top-0 px-5 flex w-full h-20 items-center justify-between text-martinique dark:bg-blackPearl bg-pampas">
