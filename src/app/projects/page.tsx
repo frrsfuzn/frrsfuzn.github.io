@@ -15,7 +15,7 @@ function Projects() {
         <Link href="/">
           <IoIosArrowBack className="text-xl dark:text-arcticParadise" />
         </Link>
-        <h3 className="ml-3 text-2xl dark:text-arcticParadise">Blogs</h3>
+        <h3 className="ml-3 text-2xl dark:text-arcticParadise">Projects</h3>
       </div>
       <div className="flex flex-col gap-4 mb-20 px-2">
         {metaProjects.map((metaProject) => (
