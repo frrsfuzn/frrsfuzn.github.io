@@ -4,6 +4,10 @@ import Section from "@/components/Section";
 import Header from "@/components/Header";
 import Timeline from "@/components/Timeline";
 import Card from "@/components/Card";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import { parse } from "date-fns";
 
 /*
   TODOS:
@@ -11,7 +15,45 @@ import Card from "@/components/Card";
   - create highlight section system
 */
 
+function getBlogs() {
+  const files = fs.readdirSync("./src/mdx/blogs");
+  const metaBlogs = files.map((filename) => {
+    const mdx = fs.readFileSync(path.join("./src/mdx/blogs", filename));
+    const { data: frontMatter } = matter(mdx);
+    return {
+      frontMatter,
+      slug: filename.split(".")[0],
+    };
+  });
+  metaBlogs.sort(
+    (a, b) =>
+      parse(b.frontMatter.date, "dd/MM/yyyy", new Date()).getTime() -
+      parse(a.frontMatter.date, "dd/MM/yyyy", new Date()).getTime()
+  );
+  return metaBlogs.slice(0, 3);
+}
+
+function getProjects() {
+  const files = fs.readdirSync("./src/mdx/projects");
+  const metaProjects = files.map((filename) => {
+    const mdx = fs.readFileSync(path.join("./src/mdx/projects", filename));
+    const { data: frontMatter } = matter(mdx);
+    return {
+      frontMatter,
+      slug: filename.split(".")[0],
+    };
+  });
+  metaProjects.sort(
+    (a, b) =>
+      parse(b.frontMatter.date, "dd/MM/yyyy", new Date()).getTime() -
+      parse(a.frontMatter.date, "dd/MM/yyyy", new Date()).getTime()
+  );
+  return metaProjects.slice(0, 3);
+}
+
 export default function Home() {
+  const metaBlogs = getBlogs();
+  const metaProjects = getProjects();
   return (
     <div className="container md:px-10 mx-auto">
       <div className="lg:flex lg:justify-between lg:gap-12 min-lg:px-5">
@@ -74,27 +116,47 @@ export default function Home() {
           <Section id="blogs">
             <div className="flex justify-between items-center mb-5">
               <h2 className="text-3xl">Blogs</h2>
-              <Link href={"/blogs"} className="dark:text-arcticParadise text-tabasco">
+              <Link
+                href={"/blogs"}
+                className="dark:text-arcticParadise text-tabasco"
+              >
                 See more
               </Link>
             </div>
             <div className="flex flex-col gap-4">
-              <Card />
-              <Card />
-              <Card />
+              {metaBlogs.map((metaBlog) => (
+                <Card
+                  key={metaBlog.slug}
+                  title={metaBlog.frontMatter.title}
+                  desc={metaBlog.frontMatter.description}
+                  href={`/blogs/${metaBlog.slug}`}
+                  date={metaBlog.frontMatter.date}
+                  bannerUrl={metaBlog.frontMatter.bannerUrl}
+                />
+              ))}
             </div>
           </Section>
           <Section id="projects">
             <div className="flex justify-between items-center mb-5">
               <h2 className="text-3xl">Projects</h2>
-              <Link href={"/projects"} className="dark:text-arcticParadise text-tabasco">
+              <Link
+                href={"/projects"}
+                className="dark:text-arcticParadise text-tabasco"
+              >
                 See more
               </Link>
             </div>
             <div className="flex flex-col gap-4">
-              <Card />
-              <Card />
-              <Card />
+              {metaProjects.map((metaProject) => (
+                <Card
+                  key={metaProject.slug}
+                  title={metaProject.frontMatter.title}
+                  desc={metaProject.frontMatter.description}
+                  href={`/projects/${metaProject.slug}`}
+                  date={metaProject.frontMatter.date}
+                  bannerUrl={metaProject.frontMatter.bannerUrl}
+                />
+              ))}
             </div>
           </Section>
         </main>
