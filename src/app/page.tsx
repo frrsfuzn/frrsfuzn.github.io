@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Section from "@/components/Section";
 import Header from "@/components/Header";
@@ -11,8 +11,7 @@ import { parse } from "date-fns";
 
 /*
   TODOS:
-  - display 3d room with threejs
-  - create highlight section system
+  - add metadata (title, desc) on pages
 */
 
 function getBlogs() {
