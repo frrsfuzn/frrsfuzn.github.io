@@ -143,6 +143,7 @@ function GameOfLifeBanner() {
   useEffect(() => {
     renderBoard(board.current, context.current, ROW, COLUMN, theme);
   }, [COLUMN, ROW, theme]);
+
   return (
     <div className="relative">
       <div className="absolute flex flex-row p-2 gap-3 bg-pampas dark:bg-blackPearl dark:text-nepal">
