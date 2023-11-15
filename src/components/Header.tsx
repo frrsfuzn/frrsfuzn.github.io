@@ -11,6 +11,7 @@ import {
 } from "react-icons/ai";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { useTheme } from "next-themes";
+import GameOfLifeBanner from "./GameOfLifeBanner";
 
 function Header() {
   const { theme, setTheme } = useTheme();
@@ -19,7 +20,9 @@ function Header() {
     <header className="lg:w-2/5 lg:sticky top-0 max-h-screen  flex flex-col justify-between max-lg:mb-20 overflow-y-auto">
       <div className="lg:h-screen">
         <div className="mb-3 lg:mt-20">
-          <div className="w-full h-60 bg-[url('https://picsum.photos/700/300')] bg-center" />
+          <div className="w-full h-60 overflow-hidden">
+            <GameOfLifeBanner />
+          </div>
           <div className="flex relative h-16 mb-5 pr-10 justify-end items-center">
             <div className="w-28 h-28 xl:w-32 xl:h-32 rounded-full bg-zinc-500 absolute left-5 xl:left-10 -top-12 xl:-top-16 overflow-hidden">
               <Image
