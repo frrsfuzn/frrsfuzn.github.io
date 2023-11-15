@@ -8,6 +8,7 @@ import {
   FaTrash,
   FaFillDrip,
 } from "react-icons/fa";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
 const CELL_SIZE = 5;
 const WIDTH = 690;
@@ -105,6 +106,7 @@ function GameOfLifeBanner() {
   const { theme } = useTheme();
   const [isPlaying, setPlaying] = useState(true);
   const [isDrawing, setDrawing] = useState(false);
+  const [isOptionOpen, setOptionOpen] = useState(false);
 
   const canvasRef = useRef<null | HTMLCanvasElement>(null);
   const context = useRef<null | CanvasRenderingContext2D>(null);
@@ -146,33 +148,38 @@ function GameOfLifeBanner() {
 
   return (
     <div className="relative">
-      <div className="absolute flex flex-row p-2 gap-3 bg-pampas dark:bg-blackPearl dark:text-nepal">
-        <button onClick={() => setPlaying((prev) => !prev)}>
-          {isPlaying ? <FaPause /> : <FaPlay />}
-        </button>
-        <button
-          onClick={() => {
-            board.current = calculateNextBoard(board.current);
-            renderBoard(board.current, context.current, ROW, COLUMN, theme);
-          }}
-        >
-          <FaStepForward />
-        </button>
-        <button
-          onClick={() => {
-            clearCells(board.current);
-            renderBoard(board.current, context.current, ROW, COLUMN, theme);
-          }}
-        >
-          <FaTrash />
-        </button>
-        <button
-          onClick={() => {
-            randomizeCells(board.current);
-            renderBoard(board.current, context.current, ROW, COLUMN, theme);
-          }}
-        >
-          <FaFillDrip />
+      <div className="absolute flex flex-row p-2 rounded-br-md bg-pampas text-martinique dark:bg-blackPearl dark:text-pampas">
+        <div className={`flex flex-row gap-3 overflow-hidden ${isOptionOpen ? 'w-fit' : 'w-0'}`}>
+          <button onClick={() => setPlaying((prev) => !prev)}>
+            {isPlaying ? <FaPause /> : <FaPlay />}
+          </button>
+          <button
+            onClick={() => {
+              board.current = calculateNextBoard(board.current);
+              renderBoard(board.current, context.current, ROW, COLUMN, theme);
+            }}
+          >
+            <FaStepForward />
+          </button>
+          <button
+            onClick={() => {
+              clearCells(board.current);
+              renderBoard(board.current, context.current, ROW, COLUMN, theme);
+            }}
+          >
+            <FaTrash />
+          </button>
+          <button
+            onClick={() => {
+              randomizeCells(board.current);
+              renderBoard(board.current, context.current, ROW, COLUMN, theme);
+            }}
+          >
+            <FaFillDrip />
+          </button>
+        </div>
+        <button className={`dark:text-nepal text-tabasco ${isOptionOpen ? 'ml-3' : 'ml-0'}`} onClick={() => setOptionOpen((prev) => !prev)}>
+          {isOptionOpen ? <IoIosArrowBack /> : <IoIosArrowForward />}
         </button>
       </div>
       <canvas
