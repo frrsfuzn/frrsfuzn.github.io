@@ -6,8 +6,7 @@ import {
   FaPause,
   FaStepForward,
   FaTrash,
-  FaFillDrip,
-  FaDiceFive
+  FaDiceFive,
 } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
 
@@ -197,6 +196,7 @@ function GameOfLifeBanner() {
         </button>
       </div>
       <canvas
+        style={{ touchAction: "none" }}
         className="bg-blackPearl dark:bg-pampas"
         onMouseMove={(e) => {
           if (e.buttons === 1) {
@@ -215,6 +215,25 @@ function GameOfLifeBanner() {
           if (board.current) board.current[posY][posX] = 1;
           renderBoard(board.current, context.current, ROW, COLUMN, theme);
         }}
+        onTouchMove={(e) => {
+          const targetRect = e.currentTarget.getBoundingClientRect();
+          const targetX = e.targetTouches[0].clientX - targetRect.left;
+          const targetY = e.targetTouches[0].clientY - targetRect.top;
+          const posX = Math.floor(targetX / CELL_SIZE);
+          const posY = Math.floor(targetY / CELL_SIZE);
+          setDrawing(true);
+          if (
+            board.current &&
+            targetX >= 0 &&
+            targetX < targetRect.width &&
+            targetY >= 0 &&
+            targetY < targetRect.height
+          ) {
+            board.current[posY][posX] = 1;
+            renderBoard(board.current, context.current, ROW, COLUMN, theme);
+          }
+        }}
+        onTouchEnd={() => setDrawing(false)}
         width={WIDTH}
         height={HEIGHT}
         ref={canvasRef}
