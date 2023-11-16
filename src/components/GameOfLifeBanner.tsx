@@ -7,8 +7,10 @@ import {
   FaStepForward,
   FaTrash,
   FaDiceFive,
+  FaQuestionCircle,
 } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
+import Link from "next/link";
 
 const CELL_SIZE = 5;
 const WIDTH = 690;
@@ -151,7 +153,7 @@ function GameOfLifeBanner() {
       <div className="absolute flex flex-row p-2 rounded-br-md bg-pampas text-martinique dark:bg-blackPearl dark:text-pampas">
         <div
           className={`flex flex-row gap-3 overflow-hidden duration-200 transition-[width] ${
-            isOptionOpen ? "w-[100px]" : "w-0"
+            isOptionOpen ? "w-[130px]" : "w-0"
           }`}
         >
           <button onClick={() => setPlaying((prev) => !prev)}>
@@ -181,6 +183,9 @@ function GameOfLifeBanner() {
           >
             <FaDiceFive />
           </button>
+          <Link target="_blank" href={"https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"}>
+            <FaQuestionCircle />
+          </Link>
         </div>
         <button
           className={`dark:text-nepal text-tabasco ${
