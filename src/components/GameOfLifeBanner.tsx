@@ -7,8 +7,9 @@ import {
   FaStepForward,
   FaTrash,
   FaFillDrip,
+  FaDiceFive
 } from "react-icons/fa";
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
 
 const CELL_SIZE = 5;
 const WIDTH = 690;
@@ -149,7 +150,11 @@ function GameOfLifeBanner() {
   return (
     <div className="relative">
       <div className="absolute flex flex-row p-2 rounded-br-md bg-pampas text-martinique dark:bg-blackPearl dark:text-pampas">
-        <div className={`flex flex-row gap-3 overflow-hidden ${isOptionOpen ? 'w-fit' : 'w-0'}`}>
+        <div
+          className={`flex flex-row gap-3 overflow-hidden duration-200 transition-all ${
+            isOptionOpen ? "w-[100px]" : "w-0"
+          }`}
+        >
           <button onClick={() => setPlaying((prev) => !prev)}>
             {isPlaying ? <FaPause /> : <FaPlay />}
           </button>
@@ -175,11 +180,20 @@ function GameOfLifeBanner() {
               renderBoard(board.current, context.current, ROW, COLUMN, theme);
             }}
           >
-            <FaFillDrip />
+            <FaDiceFive />
           </button>
         </div>
-        <button className={`dark:text-nepal text-tabasco ${isOptionOpen ? 'ml-3' : 'ml-0'}`} onClick={() => setOptionOpen((prev) => !prev)}>
-          {isOptionOpen ? <IoIosArrowBack /> : <IoIosArrowForward />}
+        <button
+          className={`dark:text-nepal text-tabasco ${
+            isOptionOpen ? "ml-3" : "ml-0"
+          }`}
+          onClick={() => setOptionOpen((prev) => !prev)}
+        >
+          <IoIosArrowForward
+            className={`transition-transform duration-200 ${
+              isOptionOpen ? "rotate-180" : "rotate-0"
+            }`}
+          />
         </button>
       </div>
       <canvas
