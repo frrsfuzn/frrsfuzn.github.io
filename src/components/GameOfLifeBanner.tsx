@@ -150,7 +150,7 @@ function GameOfLifeBanner() {
     <div className="relative">
       <div className="absolute flex flex-row p-2 rounded-br-md bg-pampas text-martinique dark:bg-blackPearl dark:text-pampas">
         <div
-          className={`flex flex-row gap-3 overflow-hidden duration-200 transition-all ${
+          className={`flex flex-row gap-3 overflow-hidden duration-200 transition-[width] ${
             isOptionOpen ? "w-[100px]" : "w-0"
           }`}
         >
