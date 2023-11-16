@@ -4,8 +4,8 @@ import Image from "next/image";
 import { compileMDX } from "next-mdx-remote/rsc";
 import Head from "next/head";
 import Link from "next/link";
+import MDXContainer from "@/components/MDXContainer";
 import { IoIosArrowBack } from "react-icons/io";
-import { components } from "@/utils/mdx";
 
 async function ProjectArticle({ params }: { params: { slug: string } }) {
   const source = await getProjects(params.slug);
@@ -18,7 +18,6 @@ async function ProjectArticle({ params }: { params: { slug: string } }) {
   }>({
     source: source,
     options: { parseFrontmatter: true },
-    components: components,
   });
 
   return (
@@ -47,9 +46,7 @@ async function ProjectArticle({ params }: { params: { slug: string } }) {
           className="mb-5"
           alt="project"
         />
-        <div className="mb-20 px-2">
-          {content}
-        </div>
+        <MDXContainer>{content}</MDXContainer>
       </div>
     </div>
   );

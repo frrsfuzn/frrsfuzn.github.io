@@ -5,7 +5,7 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import Head from "next/head";
 import Link from "next/link";
 import { IoIosArrowBack } from "react-icons/io";
-import { components } from "@/utils/mdx";
+import MDXContainer from "@/components/MDXContainer";
 
 async function ArticlePage({ params }: { params: { slug: string } }) {
   const source = await getBlogs(params.slug);
@@ -18,7 +18,6 @@ async function ArticlePage({ params }: { params: { slug: string } }) {
   }>({
     source: source,
     options: { parseFrontmatter: true },
-    components: components,
   });
 
   return (
@@ -47,7 +46,7 @@ async function ArticlePage({ params }: { params: { slug: string } }) {
           className="mb-5"
           alt="blog"
         />
-        <div className="mb-20 px-2">{content}</div>
+        <MDXContainer>{content}</MDXContainer>
       </div>
     </div>
   );
