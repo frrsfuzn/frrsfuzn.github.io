@@ -47,9 +47,7 @@ async function ArticlePage({ params }: { params: { slug: string } }) {
           className="mb-5"
           alt="blog"
         />
-        <div className="mb-20 px-2">
-          {content}
-        </div>
+        <div className="mb-20 px-2">{content}</div>
       </div>
     </div>
   );
