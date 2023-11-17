@@ -6,7 +6,7 @@ interface MDXContainer {
 
 function MDXContainer({children}: MDXContainer) {
   return (
-    <div className="mb-20 px-2 prose prose-blockquote:border-tabasco prose-blockquote:bg-almond prose-li:marker:text-martinique prose-li:text-martinique dark:prose-blockquote:border-seashellCove dark:prose-blockquote:bg-freinachtBlack dark:prose-li:marker:text-arcticParadise dark:prose-li:text-pampas dark:prose-invert max-w-none">
+    <div className="mb-20 px-2 max-sm:prose-sm prose :border-tabasco prose-blockquote:bg-almond prose-blockquote:border-tabasco prose-li:marker:text-martinique prose-li:text-martinique dark:prose-blockquote:border-seashellCove dark:prose-blockquote:bg-freinachtBlack dark:prose-li:marker:text-arcticParadise dark:prose-li:text-pampas dark:prose-invert max-w-none">
       {children}
     </div>
   );

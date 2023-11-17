@@ -34,7 +34,7 @@ async function ProjectArticle({ params }: { params: { slug: string } }) {
         </h3>
       </div>
       <div>
-        <div className="flex flex-col justify-center items-center mb-5">
+        <div className="flex flex-col justify-center items-center mb-5 px-2">
           <h1 className="text-2xl lg:text-3xl">{frontmatter.title}</h1>
           <label className="text-sm">{frontmatter.date}</label>
         </div>
