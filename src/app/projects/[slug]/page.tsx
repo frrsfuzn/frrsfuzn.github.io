@@ -4,15 +4,9 @@ import Image from "next/image";
 import { compileMDX } from "next-mdx-remote/rsc";
 import Head from "next/head";
 import Link from "next/link";
+import MDXContainer from "@/components/MDXContainer";
 import { IoIosArrowBack } from "react-icons/io";
 
-const components = {
-  h1: ({ children }) => <h1 className="text-3xl mb-5">{children}</h1>,
-  h2: ({ children }) => <h2 className="text-2xl mb-4">{children}</h2>,
-  h3: ({ children }) => <h3 className="text-xl mb-3">{children}</h3>,
-  h4: ({ children }) => <h4 className="text-lg mb-2">{children}</h4>,
-  p: ({ children }) => <p className="mb-1">{children}</p>
-};
 async function ProjectArticle({ params }: { params: { slug: string } }) {
   const source = await getProjects(params.slug);
   const { content, frontmatter } = await compileMDX<{
@@ -24,7 +18,6 @@ async function ProjectArticle({ params }: { params: { slug: string } }) {
   }>({
     source: source,
     options: { parseFrontmatter: true },
-    components: components,
   });
 
   return (
@@ -41,7 +34,7 @@ async function ProjectArticle({ params }: { params: { slug: string } }) {
         </h3>
       </div>
       <div>
-        <div className="flex flex-col justify-center items-center mb-5">
+        <div className="flex flex-col justify-center items-center mb-5 px-2">
           <h1 className="text-2xl lg:text-3xl">{frontmatter.title}</h1>
           <label className="text-sm">{frontmatter.date}</label>
         </div>
@@ -53,9 +46,7 @@ async function ProjectArticle({ params }: { params: { slug: string } }) {
           className="mb-5"
           alt="project"
         />
-        <div className="mb-20 px-2">
-          {content}
-        </div>
+        <MDXContainer>{content}</MDXContainer>
       </div>
     </div>
   );
