@@ -12,6 +12,8 @@ import { parse } from "date-fns";
 /*
   TODOS:
   - add metadata (title, desc) on pages
+  - create table of content on article page
+  > resources: https://codesandbox.io/p/sandbox/next-mdx-with-table-of-contents-g63o52?file=%2Fpages%2F%5Bpost%5D.tsx%3A1%2C1
 */
 
 function getBlogs() {
