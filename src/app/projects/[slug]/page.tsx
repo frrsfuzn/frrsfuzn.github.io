@@ -47,6 +47,7 @@ async function ProjectArticle({ params }: { params: { slug: string } }) {
           height={480}
           unoptimized
           className="mb-5"
+          style={{ objectFit: 'cover', aspectRatio: '8 / 3' }}
           alt="project"
         />
         <MDXContainer>{content}</MDXContainer>

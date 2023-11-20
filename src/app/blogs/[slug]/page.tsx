@@ -46,6 +46,7 @@ async function ArticlePage({ params }: { params: { slug: string } }) {
           width={1280}
           height={480}
           unoptimized
+          style={{ objectFit: 'cover', aspectRatio: '8 / 3' }}
           className="mb-5"
           alt="blog"
         />
