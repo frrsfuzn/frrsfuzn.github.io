@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -15,6 +15,8 @@ import GameOfLifeBanner from "./GameOfLifeBanner";
 
 function Header() {
   const { theme, setTheme } = useTheme();
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => setLoaded(true), []);
 
   return (
     <header className="lg:w-2/5 lg:sticky top-0 max-h-screen  flex flex-col justify-between max-lg:mb-20 overflow-y-auto">
@@ -39,7 +41,7 @@ function Header() {
                 }
                 className="flex mr-2 text-xl bg-blackPearl text-pampas dark:bg-pampas dark:text-blackPearl rounded-full w-10 h-10 justify-center items-center"
               >
-                {theme === "dark" ? <FaSun /> : <FaMoon />}
+                {loaded ? theme === "dark" ? <FaSun /> : <FaMoon /> : null}
               </button>
               <Link
                 href="https://www.linkedin.com/in/mochfarrasfauzan/"
