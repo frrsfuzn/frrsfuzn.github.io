@@ -6,54 +6,59 @@ import Head from "next/head";
 import Link from "next/link";
 import MDXContainer from "@/components/MDXContainer";
 import { IoIosArrowBack } from "react-icons/io";
-import { parse, format } from 'date-fns';
+import { parse, format } from "date-fns";
+import { notFound } from "next/navigation";
 
 async function ProjectArticle({ params }: { params: { slug: string } }) {
-  const source = await getProjects(params.slug);
-  const { content, frontmatter } = await compileMDX<{
-    title: string;
-    date: string;
-    topics: string;
-    description: string;
-    bannerUrl: string;
-  }>({
-    source: source,
-    options: { parseFrontmatter: true },
-  });
-  const parsedDate = parse(frontmatter.date, "dd/MM/yyyy", new Date());
-  const formattedDate = format(parsedDate, "dd MMMM yyyy");
+  try {
+    const source = await getProjects(params.slug);
+    const { content, frontmatter } = await compileMDX<{
+      title: string;
+      date: string;
+      topics: string;
+      description: string;
+      bannerUrl: string;
+    }>({
+      source: source,
+      options: { parseFrontmatter: true },
+    });
+    const parsedDate = parse(frontmatter.date, "dd/MM/yyyy", new Date());
+    const formattedDate = format(parsedDate, "dd MMMM yyyy");
 
-  return (
-    <div className="max-w-screen-lg md:px-10 mx-auto">
-      <Head>
-        <title>{frontmatter.title}</title>
-      </Head>
-      <div className="sticky top-0 px-5 flex w-full h-20 items-center justify-between text-martinique dark:bg-blackPearl bg-pampas">
-        <Link href="/projects">
-          <IoIosArrowBack className="text-xl dark:text-arcticParadise" />
-        </Link>
-        <h3 className="ml-3 text-2xl dark:text-arcticParadise truncate">
-          Projects
-        </h3>
-      </div>
-      <div>
-        <div className="flex flex-col justify-center items-center mb-5 px-2">
-          <h1 className="text-2xl lg:text-3xl">{frontmatter.title}</h1>
-          <label className="text-sm">{formattedDate}</label>
+    return (
+      <div className="max-w-screen-lg md:px-10 mx-auto">
+        <Head>
+          <title>{frontmatter.title}</title>
+        </Head>
+        <div className="sticky top-0 px-5 flex w-full h-20 items-center justify-between text-martinique dark:bg-blackPearl bg-pampas">
+          <Link href="/projects">
+            <IoIosArrowBack className="text-xl dark:text-arcticParadise" />
+          </Link>
+          <h3 className="ml-3 text-2xl dark:text-arcticParadise truncate">
+            Projects
+          </h3>
         </div>
-        <Image
-          src={frontmatter.bannerUrl}
-          width={1280}
-          height={480}
-          unoptimized
-          className="mb-5"
-          style={{ objectFit: 'cover', aspectRatio: '8 / 3' }}
-          alt="project"
-        />
-        <MDXContainer>{content}</MDXContainer>
+        <div>
+          <div className="flex flex-col justify-center items-center mb-5 px-2">
+            <h1 className="text-2xl lg:text-3xl">{frontmatter.title}</h1>
+            <label className="text-sm">{formattedDate}</label>
+          </div>
+          <Image
+            src={frontmatter.bannerUrl}
+            width={1280}
+            height={480}
+            unoptimized
+            className="mb-5"
+            style={{ objectFit: "cover", aspectRatio: "8 / 3" }}
+            alt="project"
+          />
+          <MDXContainer>{content}</MDXContainer>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } catch (err) {
+    notFound();
+  }
 }
 
 export async function generateStaticParams() {
@@ -63,11 +68,15 @@ export async function generateStaticParams() {
 }
 
 async function getProjects(slug: string) {
-  const source = fs.readFileSync(
-    path.join("./src/mdx/projects", (slug + ".mdx") as string),
-    "utf8"
-  );
-  return source;
+  try {
+    const source = fs.readFileSync(
+      path.join("./src/mdx/projects", (slug + ".mdx") as string),
+      "utf8"
+    );
+    return source;
+  } catch (err) {
+    return undefined;
+  }
 }
 
 export default ProjectArticle;
