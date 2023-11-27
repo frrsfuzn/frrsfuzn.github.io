@@ -6,6 +6,30 @@ import Head from "next/head";
 import Link from "next/link";
 import { IoIosArrowBack } from "react-icons/io";
 import MDXContainer from "@/components/MDXContainer";
+import {parse, format} from 'date-fns';
+
+type MetadataProps = {
+  params: {
+    slug: string;
+  }
+}
+
+export async function generateMetadata({ params }: MetadataProps) {
+  const source = await getBlogs(params.slug);
+  const { content, frontmatter } = await compileMDX<{
+    title: string;
+    date: string;
+    topics: string;
+    description: string;
+    bannerUrl: string;
+  }>({
+    source: source,
+    options: { parseFrontmatter: true },
+  }); 
+  return ({
+    title: frontmatter.title,
+  })
+}
 
 async function ArticlePage({ params }: { params: { slug: string } }) {
   const source = await getBlogs(params.slug);
@@ -19,6 +43,8 @@ async function ArticlePage({ params }: { params: { slug: string } }) {
     source: source,
     options: { parseFrontmatter: true },
   });
+  const parsedDate = parse(frontmatter.date, "dd/MM/yyyy", new Date());
+  const formattedDate = format(parsedDate, "dd MMMM yyyy");
 
   return (
     <div className="max-w-screen-lg md:px-10 mx-auto">
@@ -36,13 +62,14 @@ async function ArticlePage({ params }: { params: { slug: string } }) {
       <div>
         <div className="flex flex-col justify-center items-center mb-5 px-2">
           <h1 className="text-2xl lg:text-3xl font-bold">{frontmatter.title}</h1>
-          <label className="text-sm">{frontmatter.date}</label>
+          <label className="text-sm">{formattedDate}</label>
         </div>
         <Image
           src={frontmatter.bannerUrl}
           width={1280}
           height={480}
           unoptimized
+          style={{ objectFit: 'cover', aspectRatio: '8 / 3' }}
           className="mb-5"
           alt="blog"
         />

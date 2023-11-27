@@ -6,6 +6,7 @@ import Head from "next/head";
 import Link from "next/link";
 import MDXContainer from "@/components/MDXContainer";
 import { IoIosArrowBack } from "react-icons/io";
+import { parse, format } from 'date-fns';
 
 async function ProjectArticle({ params }: { params: { slug: string } }) {
   const source = await getProjects(params.slug);
@@ -19,6 +20,8 @@ async function ProjectArticle({ params }: { params: { slug: string } }) {
     source: source,
     options: { parseFrontmatter: true },
   });
+  const parsedDate = parse(frontmatter.date, "dd/MM/yyyy", new Date());
+  const formattedDate = format(parsedDate, "dd MMMM yyyy");
 
   return (
     <div className="max-w-screen-lg md:px-10 mx-auto">
@@ -36,7 +39,7 @@ async function ProjectArticle({ params }: { params: { slug: string } }) {
       <div>
         <div className="flex flex-col justify-center items-center mb-5 px-2">
           <h1 className="text-2xl lg:text-3xl">{frontmatter.title}</h1>
-          <label className="text-sm">{frontmatter.date}</label>
+          <label className="text-sm">{formattedDate}</label>
         </div>
         <Image
           src={frontmatter.bannerUrl}
@@ -44,6 +47,7 @@ async function ProjectArticle({ params }: { params: { slug: string } }) {
           height={480}
           unoptimized
           className="mb-5"
+          style={{ objectFit: 'cover', aspectRatio: '8 / 3' }}
           alt="project"
         />
         <MDXContainer>{content}</MDXContainer>
