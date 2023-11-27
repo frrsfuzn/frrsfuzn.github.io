@@ -8,6 +8,29 @@ import { IoIosArrowBack } from "react-icons/io";
 import MDXContainer from "@/components/MDXContainer";
 import {parse, format} from 'date-fns';
 
+type MetadataProps = {
+  params: {
+    slug: string;
+  }
+}
+
+export async function generateMetadata({ params }: MetadataProps) {
+  const source = await getBlogs(params.slug);
+  const { content, frontmatter } = await compileMDX<{
+    title: string;
+    date: string;
+    topics: string;
+    description: string;
+    bannerUrl: string;
+  }>({
+    source: source,
+    options: { parseFrontmatter: true },
+  }); 
+  return ({
+    title: frontmatter.title,
+  })
+}
+
 async function ArticlePage({ params }: { params: { slug: string } }) {
   const source = await getBlogs(params.slug);
   const { content, frontmatter } = await compileMDX<{

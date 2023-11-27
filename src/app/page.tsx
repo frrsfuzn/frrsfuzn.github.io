@@ -8,13 +8,17 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { parse } from "date-fns";
+import { Metadata } from "next";
 
 /*
   TODOS:
-  - add metadata (title, desc) on pages
   - create table of content on article page
   > resources: https://codesandbox.io/p/sandbox/next-mdx-with-table-of-contents-g63o52?file=%2Fpages%2F%5Bpost%5D.tsx%3A1%2C1
 */
+
+export const metadata: Metadata = {
+  title: 'Mochamad Farras Fauzan',
+}
 
 function getBlogs() {
   const files = fs.readdirSync("./src/mdx/blogs");

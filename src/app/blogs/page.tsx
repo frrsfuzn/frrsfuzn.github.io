@@ -6,6 +6,11 @@ import matter from "gray-matter";
 import { IoIosArrowBack } from "react-icons/io";
 import path from "path";
 import { parse } from "date-fns";
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Blogs',
+}
 
 function Blogs() {
   const metaBlogs = getBlogs();
