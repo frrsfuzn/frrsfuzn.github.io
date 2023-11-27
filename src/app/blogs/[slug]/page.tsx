@@ -1,5 +1,3 @@
-import fs from "fs";
-import path from "path";
 import Image from "next/image";
 import { compileMDX } from "next-mdx-remote/rsc";
 import Head from "next/head";
@@ -8,6 +6,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import MDXContainer from "@/components/MDXContainer";
 import {parse, format} from 'date-fns';
 import { notFound } from 'next/navigation'
+import { getArticle, getArticleMeta } from "@/utils/mdx";
 
 type MetadataProps = {
   params: {
@@ -17,28 +16,18 @@ type MetadataProps = {
 
 export async function generateMetadata({ params }: MetadataProps) {
   try {
-    const source = await getBlogs(params.slug);
-    const { content, frontmatter } = await compileMDX<{
-      title: string;
-      date: string;
-      topics: string;
-      description: string;
-      bannerUrl: string;
-    }>({
-      source: source,
-      options: { parseFrontmatter: true },
-    }); 
-    return ({
-      title: frontmatter.title,
-    })
-  } catch(err) {
+    const metadata = getArticleMeta('./src/mdx/blogs', params.slug);
+    return {
+      title: metadata.title,
+    }
+  } catch (err) {
     notFound();
   }
 }
 
 async function ArticlePage({ params }: { params: { slug: string } }) {
   try {
-    const source = await getBlogs(params.slug);
+    const source = getArticle('./src/mdx/blogs', params.slug);
     const { content, frontmatter } = await compileMDX<{
       title: string;
       date: string;
@@ -46,7 +35,7 @@ async function ArticlePage({ params }: { params: { slug: string } }) {
       description: string;
       bannerUrl: string;
     }>({
-      source: source,
+      source: source as string,
       options: { parseFrontmatter: true },
     });
     const parsedDate = parse(frontmatter.date, "dd/MM/yyyy", new Date());
@@ -87,24 +76,6 @@ async function ArticlePage({ params }: { params: { slug: string } }) {
     notFound();
   }
  
-}
-
-export async function generateStaticParams() {
-  const files = fs.readdirSync("./src/mdx/blogs");
-  const pages = files.map((file) => ({ slug: file }));
-  return pages;
-}
-
-async function getBlogs(slug: string) {
-  try {
-    const source = fs.readFileSync(
-      path.join("./src/mdx/blogs", (slug + ".mdx") as string),
-      "utf8"
-    );
-    return source;
-  } catch(err) {
-    return undefined
-  }
 }
 
 export default ArticlePage;

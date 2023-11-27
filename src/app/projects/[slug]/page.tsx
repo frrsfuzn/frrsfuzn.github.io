@@ -1,5 +1,3 @@
-import fs from "fs";
-import path from "path";
 import Image from "next/image";
 import { compileMDX } from "next-mdx-remote/rsc";
 import Head from "next/head";
@@ -8,10 +6,28 @@ import MDXContainer from "@/components/MDXContainer";
 import { IoIosArrowBack } from "react-icons/io";
 import { parse, format } from "date-fns";
 import { notFound } from "next/navigation";
+import { getArticle, getArticleMeta } from "@/utils/mdx";
+
+type MetadataProps = {
+  params: {
+    slug: string;
+  }
+}
+
+export async function generateMetadata({ params }: MetadataProps) {
+  try {
+    const metadata = getArticleMeta('./src/mdx/projects', params.slug);
+    return {
+      title: metadata.title,
+    }
+  } catch (err) {
+    notFound();
+  }
+}
 
 async function ProjectArticle({ params }: { params: { slug: string } }) {
   try {
-    const source = await getProjects(params.slug);
+    const source = getArticle('./src/mdx/projects', params.slug);
     const { content, frontmatter } = await compileMDX<{
       title: string;
       date: string;
@@ -19,7 +35,7 @@ async function ProjectArticle({ params }: { params: { slug: string } }) {
       description: string;
       bannerUrl: string;
     }>({
-      source: source,
+      source: source as string,
       options: { parseFrontmatter: true },
     });
     const parsedDate = parse(frontmatter.date, "dd/MM/yyyy", new Date());
@@ -58,24 +74,6 @@ async function ProjectArticle({ params }: { params: { slug: string } }) {
     );
   } catch (err) {
     notFound();
-  }
-}
-
-export async function generateStaticParams() {
-  const files = fs.readdirSync("./src/mdx/projects");
-  const pages = files.map((file) => ({ slug: file }));
-  return pages;
-}
-
-async function getProjects(slug: string) {
-  try {
-    const source = fs.readFileSync(
-      path.join("./src/mdx/projects", (slug + ".mdx") as string),
-      "utf8"
-    );
-    return source;
-  } catch (err) {
-    return undefined;
   }
 }
 

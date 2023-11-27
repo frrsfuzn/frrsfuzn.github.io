@@ -1,19 +1,16 @@
 import Card from "@/components/Card";
 import Link from "next/link";
 import React from "react";
-import fs from "fs";
-import matter from "gray-matter";
 import { IoIosArrowBack } from "react-icons/io";
-import path from "path";
-import { parse } from "date-fns";
 import { Metadata } from 'next'
+import { getMetaArticles } from "@/utils/mdx";
 
 export const metadata: Metadata = {
   title: 'Blogs',
 }
 
 function Blogs() {
-  const metaBlogs = getBlogs();
+  const metaBlogs = getMetaArticles('./src/mdx/blogs');
   return (
     <div className="max-w-screen-lg md:px-10 mx-auto">
       <div className="sticky top-0 px-5 flex w-full h-20 items-center justify-between text-martinique dark:bg-blackPearl bg-pampas">
@@ -36,24 +33,6 @@ function Blogs() {
       </div>
     </div>
   );
-}
-
-function getBlogs() {
-  const files = fs.readdirSync("./src/mdx/blogs");
-  const metaBlogs = files.map((filename) => {
-    const mdx = fs.readFileSync(path.join("./src/mdx/blogs", filename));
-    const { data: frontMatter } = matter(mdx);
-    return {
-      frontMatter,
-      slug: filename.split(".")[0],
-    };
-  });
-  metaBlogs.sort(
-    (a, b) =>
-      parse(b.frontMatter.date, "dd/MM/yyyy", new Date()).getTime() -
-      parse(a.frontMatter.date, "dd/MM/yyyy", new Date()).getTime()
-  );
-  return metaBlogs;
 }
 
 export default Blogs;
