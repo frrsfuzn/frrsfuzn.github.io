@@ -98,18 +98,8 @@ function Header() {
               </Link>
             </li>
             <li className="mr-4">
-              <Link href="https://github.com/frrsfuzn" target="_blank">
+              <Link href="https://www.linkedin.com/in/mochfarrasfauzan/" target="_blank">
                 <AiFillLinkedin className="text-3xl dark:text-blueSplash text-nepal" />
-              </Link>
-            </li>
-            <li className="mr-4">
-              <Link href="https://github.com/frrsfuzn" target="_blank">
-                <AiFillInstagram className="text-3xl dark:text-blueSplash text-nepal" />
-              </Link>
-            </li>
-            <li className="mr-4">
-              <Link href="https://github.com/frrsfuzn" target="_blank">
-                <AiFillTwitterSquare className="text-3xl dark:text-blueSplash text-nepal" />
               </Link>
             </li>
           </ul>
