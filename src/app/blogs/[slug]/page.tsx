@@ -6,7 +6,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import MDXContainer from "@/components/MDXContainer";
 import {parse, format} from 'date-fns';
 import { notFound } from 'next/navigation'
-import { getArticle, getArticleMeta } from "@/utils/mdx";
+import { getArticle, getArticleMeta, getArticleSlugs } from "@/utils/mdx";
 
 type MetadataProps = {
   params: {
@@ -23,6 +23,11 @@ export async function generateMetadata({ params }: MetadataProps) {
   } catch (err) {
     notFound();
   }
+}
+
+export async function generateStaticParams() {
+  const result = getArticleSlugs('./src/mdx/blogs');
+  return result;
 }
 
 async function ArticlePage({ params }: { params: { slug: string } }) {

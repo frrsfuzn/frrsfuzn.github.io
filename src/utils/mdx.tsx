@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { parse } from 'date-fns';
+import { parse } from "date-fns";
 
 export function getMetaArticles(articlePath: string) {
   const files = fs.readdirSync(articlePath);
@@ -21,6 +21,13 @@ export function getMetaArticles(articlePath: string) {
   return metaBlogs;
 }
 
+export async function getArticleSlugs(articlePath: string) {
+  const files = fs.readdirSync(articlePath);
+  return files.map((filename) => ({
+    slug: filename.split(".")[0],
+  }));
+}
+
 export function getArticle(articlePath: string, slug: string) {
   try {
     const source = fs.readFileSync(
@@ -28,7 +35,7 @@ export function getArticle(articlePath: string, slug: string) {
       "utf8"
     );
     return source;
-  } catch(err) {
+  } catch (err) {
     return err;
   }
 }
@@ -41,7 +48,7 @@ export function getArticleMeta(articlePath: string, slug: string) {
     );
     const { data: frontMatter } = matter(source);
     return frontMatter;
-  } catch(err) {
-    return undefined
+  } catch (err) {
+    return undefined;
   }
 }
