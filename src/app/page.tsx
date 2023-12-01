@@ -18,6 +18,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: 'Mochamad Farras Fauzan',
+  description: 'a sanctuary for the outpouring of my thoughts'
 }
 
 function getBlogs() {

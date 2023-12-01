@@ -19,6 +19,7 @@ export async function generateMetadata({ params }: MetadataProps) {
     const metadata = getArticleMeta('./src/mdx/projects', params.slug);
     return {
       title: metadata?.title,
+      description: metadata?.description
     }
   } catch (err) {
     notFound();
